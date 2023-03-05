@@ -1,6 +1,6 @@
 import * as api from "../../shared/contacts";
 
-// import * as actions from "./contacts-actions";
+
  import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchAllContacts = createAsyncThunk(
@@ -56,48 +56,5 @@ export const fetchDeleteContact = createAsyncThunk(
 )
 
 
-// const isDublicate = (name, number) => {
-//     const normalizedName = name.toLowerCase().trim();
-//     const normalizedNumber = number.toString().trim();
-    
-//     const result = contacts.find(({ name, number }) => {
-//       return (
-//         name.toLowerCase() === normalizedName || number === normalizedNumber
-//       );
-//     });
-//     return result;
-//   };
 
-// export const fetchAddContact = (data) => {
-//     const func = async (dispatch, getState) => {
-//         try { 
-//             const { name, number } = getState();
-//             if (isDublicate( name, number )) {
-//       alert(name + ' is already in contacts');
-//       return false;
-//     }
-//             dispatch(actions.fetchAddContactLoading());
-//             const result = await api.addContact(data);
-//             dispatch(actions.fetchAddContactSuccess(result));
-//         }
-//         catch ({ response }) {
-//             dispatch(actions.fetchAddContactError(response.data.message))
-//         }
-//     }
-//     return func;
-// }
-
-// export const fetchDeleteContact = (id) => {
-//     const func = async (dispatch) => {
-//         try { 
-//             dispatch(actions.fetchDeleteContactLoading());
-//             await api.deleteContact(id);
-//             dispatch(actions.fetchDeleteContactSuccess(id))
-//         }
-//         catch ({ response }) {
-//             dispatch(actions.fetchDeleteContactError(response.data.message));
-//         }
-//      }
-//     return func;
-// }
 
