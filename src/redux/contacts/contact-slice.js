@@ -3,9 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchAllContacts, fetchAddContact, fetchDeleteContact } from "./contacts-operations";
 
 const initialState = {
+    contacts: {
     items: [],
     loading: false,
     error: null,
+    },
+   filter: ""
 }
 
 const contactSlice = createSlice({
@@ -29,7 +32,7 @@ const contactSlice = createSlice({
         })
         .addCase(fetchAddContact.fulfilled, (store, { payload }) => {
             store.loading = false;
-            store.items.push(payload);
+            store.items?.push(payload);
         })
         .addCase(fetchAddContact.rejected, (store, { payload }) => {
             store.loading = false;

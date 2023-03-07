@@ -10,6 +10,7 @@ const Filter = ({ value, changeFilter }) => {
         onChange={changeFilter}
         type="text"
         value={value}
+        name="filter"
       ></input>
     </label>
   );

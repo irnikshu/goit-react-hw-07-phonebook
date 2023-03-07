@@ -3,18 +3,31 @@ import * as api from "../../shared/contacts";
 
  import { createAsyncThunk } from "@reduxjs/toolkit";
 
+// export const fetchAllContacts = createAsyncThunk(
+//     "contacts/fetch-all",
+//     async (_, thunkAPI) => {
+//         try {
+//             const data = await api.getAllContacts();
+//             return data;
+//         }
+//         catch ({ response }) {
+//             return thunkAPI.rejectWithValue(response.data);
+//         }
+//     }
+// )
 export const fetchAllContacts = createAsyncThunk(
-    "contacts/fetch-all",
-    async (_, thunkAPI) => {
+    "contacts/fetchAll",
+    async(_, rejectWithValue) => {
         try {
             const data = await api.getAllContacts();
             return data;
         }
-        catch ({ response }) {
-            return thunkAPI.rejectWithValue(response.data);
+        catch({response}) {
+            return rejectWithValue(response.data);
         }
     }
 )
+
 export const fetchAddContact = createAsyncThunk(
     "contacts/add",
     async (data, { rejectWithValue }) => {
@@ -36,21 +49,35 @@ export const fetchAddContact = createAsyncThunk(
         })
             if (result) {
                 alert(`${name} is already in contacts`)
+                 return false;
             }
-            return false;
+           
         }
     }
 )
  
+// export const fetchDeleteContact = createAsyncThunk(
+//     "contacts/delete",
+//     async (id, { rejectWithValue }) => {
+//         try {
+//             await api.deleteContact(id);
+//             return id;
+//         }
+//         catch ({ response }) {
+//             return rejectWithValue(response.data);
+//         }
+//     }
+// )
+
 export const fetchDeleteContact = createAsyncThunk(
-    "contacts/delete", 
-    async (id, { rejectWithValue }) => {
+    "contacts/delete",
+    async(id, {thunkAPI}) => {
         try {
             await api.deleteContact(id);
             return id;
         }
-        catch ({ response }) {
-            return rejectWithValue(response.data);
+        catch({response}) {
+            return thunkAPI.rejectWithValue(response.data);
         }
     }
 )

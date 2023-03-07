@@ -36,8 +36,8 @@ const App = () => {
     dispatch(fetchAddContact({ name, number }));
   };
 
-  const handleDeleteContact = contactId => {
-    dispatch(fetchDeleteContact(contactId));
+  const handleDeleteContact = id => {
+    dispatch(fetchDeleteContact(id));
   };
 
   const changeFilter = ({ target }) => {
@@ -57,7 +57,8 @@ const App = () => {
           deleteContact={handleDeleteContact}
         />
       )}
-      {!isContacts && <p>No books in list</p>}
+
+      {!isContacts && <p>No contacts in list</p>}
     </div>
   );
 };

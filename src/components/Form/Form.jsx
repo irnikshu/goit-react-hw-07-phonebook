@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import styles from '../app.module.scss';
 import initialState from './initialState';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const Form = ({ onSubmit }) => {
   const [state, setState] = useState({ ...initialState });
@@ -16,7 +16,7 @@ const Form = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ name, number });
+    onSubmit({ ...state });
     setState({ ...initialState });
   };
 
@@ -58,6 +58,6 @@ const Form = ({ onSubmit }) => {
 };
 export default Form;
 
-Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// Form.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };

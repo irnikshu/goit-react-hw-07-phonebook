@@ -1,10 +1,10 @@
 import styles from './contacts.module.scss';
 import PropTypes from 'prop-types';
 
-const ContactsList = ({ contact, deleteContact }) => {
+const ContactsList = ({ items, deleteContact }) => {
   return (
     <ul className={styles.contactList}>
-      {contact.map(({ id, name, number }) => (
+      {items.map(({ id, name, number }) => (
         <li key={id} className={styles.contactItem}>
           {name}: {number}
           <button
